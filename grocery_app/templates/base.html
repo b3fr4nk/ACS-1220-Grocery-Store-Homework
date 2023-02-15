@@ -16,6 +16,14 @@
                 <div>
                     <a href="/new_store">New Store</a>
                     <a href="/new_item">New Item</a>
+
+                    {% if logged_in%}
+                        <a href="/logout">Log Out</a>
+                        <a href="{{url_for('main.view_cart')}}">View Cart</a>
+                    {% else %}
+                        <a href="/signup">Sign Up</a>
+                        <a href="/login">Log In</a>
+                    {% endif %}
                 </div>
             </nav>
             {% block content %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{%for item in items%}
+
+<form method='POST' action="{{url_for('add_to_shopping_list', item_id = item_id)}}">
+    <fieldset>
+        <legend>Please enter your information:</legend>
+        {{form.csrf_token}}
+        {{form.name.label}}
+        {{form.name}}
+
+        {{form.item.label}}
+        {{form.item}}
+
+        {{form.amount.label}}
+        {{form.amount}}
+
+        {{form.submit}}
+    </fieldset>
+</form>
+
+{% endfor %}
+
+{% endblock %}

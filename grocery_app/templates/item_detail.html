@@ -11,10 +11,11 @@
 
 <p><strong>Store:</strong> {{ item.store.title }}</p>
 
+<a href="{{url_for('main.add_to_shopping_list', item_id=item.id)}}">Add to Cart</a>
 
 <h2>Edit Item</h2>
 
-<form>
+<form method="POST" action="{{url_for('main.item_detail', item_id = item.id)}}">
     <fieldset>
         <legend>Please enter your information:</legend>
         {{form.csrf_token}}
@@ -63,8 +64,6 @@
                 <li class="error">{{error}}</li>
             {% endfor %}
         </ul>
-        <!-- TODO: Remove the next paragraph and use the `form` object passed in 
-            from the route to render a form. -->
 
         <input type="submit" value="Submit">
     </fieldset>
